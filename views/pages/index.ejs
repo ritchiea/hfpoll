@@ -3,7 +3,13 @@
 <head>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
   <script>
-    var socket = io();
+    var url;
+    if window.location.pathname.match("localhost") {
+      url = "http://localhost:5000";
+    } else {
+      url = "http://www.andrewsnewhedgefund.com";
+    }
+    var socket = io.connect(url);
   </script>
   <% include ../partials/header.ejs %>
 </head>
