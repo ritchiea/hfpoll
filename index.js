@@ -3,8 +3,8 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 
 const server = express()
-const http = require('http').Server(express)
-const io = require('socket.io')(http);
+const http = require('http').Server(server)
+const io = require('socket.io')(http)
 
 server.use(express.static(path.join(__dirname, 'public')))
 server.set('views', path.join(__dirname, 'views'))
