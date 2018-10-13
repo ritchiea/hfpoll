@@ -16,6 +16,8 @@ body {
   color: #235826;
 }
 
+.shark { max-height: 18em; }
+
 .charo { font-family: 'Charmonman', cursive; }
 .indie { font-family: 'Indie Flower', cursive; }
 .lobster { font-family: 'Lobster', cursive !important; }
