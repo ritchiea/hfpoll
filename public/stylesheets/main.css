@@ -3,6 +3,17 @@ body {
   color: #fff;
 }
 
+.btn {
+  margin-top: 2em;
+  font-size: 200%;
+  font-weight: 600;
+}
+
+#edit {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .pink {
   color: #eb76dd;
 }
@@ -11,6 +22,9 @@ body {
 }
 .brightpink {
   color: #fa2890;
+}
+.bg-brightpink {
+  background-color: #fa2890;
 }
 .money {
   color: #235826;
