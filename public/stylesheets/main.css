@@ -15,6 +15,15 @@ body {
 .money {
   color: #235826;
 }
+.gold {
+  color: #FFD700;
+  font-weight: 600;
+}
+
+.bold {
+  font-weight: 600;
+  font-size: 110%;
+}
 
 .shark { max-height: 9em; }
 
@@ -27,3 +36,7 @@ body {
 .paci { font-family: 'Pacifico', cursive; }
 .ms { font-family: 'Merriweather Sans', sans-serif; }
 .sri { font-family: 'Srisakdi', cursive; }
+
+.hidden {
+  display: none;
+}

@@ -6,13 +6,50 @@
   <link href="https://fonts.googleapis.com/css?family=Charmonman|Indie+Flower|Lobster|Merriweather+Sans|Pacifico|Srisakdi" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
   <script>
-    var socket = io();
-    $(document).on("change", "#name", function(){
-      console.log("doing stuff")
-      $name = $(this);
-      console.log($name)
-      console.log(socket)
-      socket.emit("name", $name.val());
+    $(document).ready(function(){
+      var questions = [
+        {"n": "gold", "q": "<span class='gold'>Gold</span>, in or out?",},
+        {"n": "secret", "q": "Tell me a secret",},
+        {"n": "love", "q": "how much do you love money? answer 1-10",},
+        {"n": "passport", "q": "What's your passport number?",},
+        {"n": "asset", "q": "What's your most valuable asset?",},
+        {"n": "piles", "q": "Is it ok if I privately send you photos of piles of money? if so respond with your email",},
+        {"n": "rich", "q": "What makes you feel rich?",},
+        {"n": "spendng", "q": "What do you like spending money on?",},
+        {"n": "identify", "q": "Do you identify as a future millionaire, future billionaire or living god?"}
+      ];
+      function getRandom() {
+        return Math.floor(Math.random() * Math.floor(questions.length));
+      }
+      function getRandomSubarray(arr) {
+        var shuffled = arr.slice(0), i = arr.length, temp, index;
+        while (i--) {
+            index = Math.floor((i + 1) * Math.random());
+            temp = shuffled[index];
+            shuffled[index] = shuffled[i];
+            shuffled[i] = temp;
+        }
+        return shuffled.slice(0, 3);
+      }
+      var socket = io();
+      $(document).on("change", "#name", function(){
+        console.log("doing stuff")
+        $name = $(this);
+        console.log($name)
+        console.log(socket)
+        socket.emit("name", $name.val());
+      });
+      var show = getRandomSubarray(questions);
+      $form = $("form")
+      console.log(show)
+      show.forEach(function(question) {
+        $tem = $("#template").clone();
+        $tem.prop("id", undefined);
+        $tem.find("label").prop("name", question["n"])
+        $tem.find("label").html(question["q"])
+        $tem.find("textarea").prop("id", question["n"])
+        $tem.appendTo($form)
+      })
     });
   </script>
 </head>
@@ -32,7 +69,7 @@
     <div class="row">
       <div class="col-xs-12">
         <img class="shark" src="http://www.andrewritchie.info/images/hammerhead_shark.jpg"/>
-        <h5 class="sub-header ms brightpink">this shark is here cuz sharks are cool!!</h5>
+        <h5 class="sub-header ms brightpink">this shark is here cuz <span class="bold lobster">sharks are cool as fuck bro</span> !!!</h5>
       </div>
     </div>
     <div class="row">
@@ -46,7 +83,11 @@
       </div>
     </div>
   </div>
-
-
+  <div class="hidden">
+    <div id="template" class="form-group">
+      <label for=""></label>
+      <textarea class="form-control" id="" placeholder=""></textarea>
+    </div>
+  </div>
 </body>
 </html>
