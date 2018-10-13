@@ -5,6 +5,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
   <script>
     var socket = io();
+    $("#name").on("change", function(){
+      $name = $(this);
+      socket.emit("name", $name.val());
+    });
   </script>
   <link href="https://fonts.googleapis.com/css?family=Charmonman|Indie+Flower|Lobster|Merriweather+Sans|Pacifico|Srisakdi" rel="stylesheet">
   <% include ../partials/header.ejs %>
