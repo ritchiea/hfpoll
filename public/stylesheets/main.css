@@ -18,6 +18,9 @@ body {
 
 .shark { max-height: 9em; }
 
+.center { text-align: center; }
+.right { text-align: right; }
+
 .charo { font-family: 'Charmonman', cursive; }
 .indie { font-family: 'Indie Flower', cursive; }
 .lobster { font-family: 'Lobster', cursive !important; }
