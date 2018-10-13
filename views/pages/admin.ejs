@@ -8,6 +8,7 @@
   <script>
     var socket = io();
     $row = $(".row:first")
+    socket.emit("admin")
     socket.on("update", function(data) {
       console.log(data)
       for (var key in data) {
