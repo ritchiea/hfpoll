@@ -7,8 +7,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
   <script>
     var socket = io();
-    $("#name").on("change", function(){
+    $(document).on("change", "#name", function(){
+      console.log("doing stuff")
       $name = $(this);
+      console.log($name)
+      console.log(socket)
       socket.emit("name", $name.val());
     });
   </script>
