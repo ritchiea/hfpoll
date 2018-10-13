@@ -23,6 +23,10 @@ io.on('connection', (socket) => {
   socket.on("admin", function(msg) {
     socket.emit("update", data);
   });
+  socket.on("CLEAR", function(msg) {
+    data = {};
+    socket.emit("update", data);
+  });
   socket.on('disconnect', () => console.log('Client disconnected'));
 });
 
