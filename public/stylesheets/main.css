@@ -36,6 +36,10 @@ font-weight; 600;
   margin-left: 5em;
 }
 
+.container-fluid {
+  margin-bottom: 18em;
+}
+
 .shark { max-height: 9em; }
 
 .center { text-align: center; }
