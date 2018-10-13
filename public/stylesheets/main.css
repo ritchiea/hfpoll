@@ -32,8 +32,8 @@ font-weight; 600;
 
 .answer-data {
   display: inline-block;
+  margin-top: 5em;
   margin-left: 5em;
-  margin-bottom: 5em;
 }
 
 .shark { max-height: 9em; }
