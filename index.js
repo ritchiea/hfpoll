@@ -10,11 +10,13 @@ server.use(express.static(path.join(__dirname, 'public')))
 server.set('views', path.join(__dirname, 'views'))
 server.set('view engine', 'ejs')
 server.get('/', (req, res) => res.render('pages/index'))
+server.get('/secretadminaaa', (req, res) => res.render('pages/admin'))
 
 io.on('connection', (socket) => {
   console.log('Client connected');
   socket.on("name", function(msg) {
     console.log(`NAME: ${msg}`);
+    socket.emit("update", msg);
   });
   socket.on('disconnect', () => console.log('Client disconnected'));
 });

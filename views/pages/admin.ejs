@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <% include ../partials/header.ejs %>
+  <link href="https://fonts.googleapis.com/css?family=Charmonman|Indie+Flower|Lobster|Merriweather+Sans|Pacifico|Srisakdi" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+  <script>
+    var socket = io();
+    socket.on("update", function(msg) {
+      console.log(msg)
+    });
+  </script>
+</head>
+
+<body>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12">
+      </div>
+    </div>
+  </div>
+
+
+</body>
+</html>
