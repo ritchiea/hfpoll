@@ -14,6 +14,9 @@ server.get('/', (req, res) => res.render('pages/index'))
 io.on('connection', (socket) => {
   console.log('Client connected');
   socket.on('disconnect', () => console.log('Client disconnected'));
+  socket.on("name", function(msg) {
+    console.log(msg);
+  })
 });
 
 http.listen(PORT, () => console.log(`Listening on ${ PORT }`))
