@@ -18,6 +18,17 @@
         {"n": "spendng", "q": "What do you like spending money on?",},
         {"n": "identify", "q": "Do you identify as a future millionaire, future billionaire or living god?"}
       ];
+      function guid() {
+        return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+          s4() + '-' + s4() + s4() + s4();
+      }
+
+      function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000)
+        .toString(16)
+        .substring(1);
+      }
+      $("form").prop("id", guid());
       function getRandom() {
         return Math.floor(Math.random() * Math.floor(questions.length));
       }
@@ -32,12 +43,8 @@
         return shuffled.slice(0, 3);
       }
       var socket = io();
-      $(document).on("change", "#name", function(){
-        console.log("doing stuff")
-        $name = $(this);
-        console.log($name)
-        console.log(socket)
-        socket.emit("name", $name.val());
+      $(document).on("change", "input, textarea", function(){
+        socket.emit("answer", getFormData());
       });
       var show = getRandomSubarray(questions);
       $form = $("form")
@@ -48,9 +55,25 @@
         $tem.find("label").prop("name", question["n"])
         $tem.find("label").html(question["q"])
         $tem.find("textarea").prop("id", question["n"])
+        $tem.find("textarea").prop("name", question["n"])
         $tem.appendTo($form)
       })
     });
+    function getFormData() {
+      var result = {};
+      result["id"] = $form.prop("id")
+      result["name"] = $("#name").val()
+      result["questions"] = []
+      $answers = $(".answer:visible")
+      for (var i = 0; i < $answers.length; i++){
+        var answer = $($answers[i])
+        result["questions"].push({
+          "q": answer.find("label").text(),
+          "a": answer.find("textarea").val(),
+        })
+      }
+      return result
+    }
   </script>
 </head>
 
@@ -84,7 +107,7 @@
     </div>
   </div>
   <div class="hidden">
-    <div id="template" class="form-group">
+    <div id="template" class="form-group answer">
       <label for=""></label>
       <textarea class="form-control" id="" placeholder=""></textarea>
     </div>

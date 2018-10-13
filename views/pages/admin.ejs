@@ -7,8 +7,40 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
   <script>
     var socket = io();
-    socket.on("update", function(msg) {
-      console.log(msg)
+    $row = $(".row:first")
+    socket.on("update", function(data) {
+      console.log(data)
+      for (var key in data) {
+        var obj = data[key]
+        if ($("#"+obj["id"]).length) {
+          $elem = $("#"+obj["id"])
+          $elem.find(".name").text(obj["name"])
+          $answers = $elem.find(".answers")
+          $answers.html("")
+          obj["questions"].forEach(function(question){
+            $answers.append(question["q"])
+            $answers.append("</br>")
+            $answers.append(question["a"])
+            $answers.append("</br>")
+            $answers.append("</br>")
+          })
+        } else {
+          $tem = $("#template").clone()
+          $tem.prop("id", obj["id"])
+          $tem.find(".name").text(obj["name"])
+          $answers = $tem.find(".answers")
+          obj["questions"].forEach(function(question){
+            $answers.append(question["q"])
+            $answers.append("</br>")
+            $answers.append(question["a"])
+            $answers.append("</br>")
+            $answers.append("</br>")
+          })
+          $tem.removeClass("hidden")
+          console.log($tem)
+          $(".row:last").append($tem)
+        }
+    }
     });
   </script>
 </head>
@@ -17,11 +49,12 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-xs-12">
-      </div>
     </div>
   </div>
 
-
+  <div class="hidden answer-data" id="template">
+    <div class="name"></div>
+    <div class="answers"></div>
+  <div>
 </body>
 </html>

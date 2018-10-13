@@ -25,6 +25,17 @@ body {
   font-size: 110%;
 }
 
+.name {
+font-size: 150%;
+font-weight; 600;
+}
+
+.answer-data {
+  display: inline-block;
+  margin-left: 5em;
+  margin-bottom: 5em;
+}
+
 .shark { max-height: 9em; }
 
 .center { text-align: center; }
