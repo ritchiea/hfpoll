@@ -8,7 +8,7 @@
   <script>
     var socket = io();
     $row = $(".row:first")
-    socket.emit("admin")
+    socket.emit("admin", "nomessage")
     socket.on("update", function(data) {
       console.log(data)
       for (var key in data) {
@@ -21,7 +21,7 @@
           obj["questions"].forEach(function(question){
             $answers.append(question["q"])
             $answers.append("</br>")
-            $answers.append(question["a"])
+            $answers.append("<span class='teal'>"+question["a"]+"</span>")
             $answers.append("</br>")
             $answers.append("</br>")
           })
@@ -33,12 +33,11 @@
           obj["questions"].forEach(function(question){
             $answers.append(question["q"])
             $answers.append("</br>")
-            $answers.append(question["a"])
+            $answers.append("<span class='teal'>"+question["a"]+"</span>")
             $answers.append("</br>")
             $answers.append("</br>")
           })
           $tem.removeClass("hidden")
-          console.log($tem)
           $(".row:last").append($tem)
         }
     }

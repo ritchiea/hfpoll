@@ -26,14 +26,17 @@ body {
 }
 
 .name {
-font-size: 150%;
-font-weight; 600;
+  font-size: 150%;
+  font-weight; 600;
+  margin-bottom: 1em;
 }
 
 .answer-data {
+  padding: 1em;
   display: inline-block;
-  margin-top: 5em;
-  margin-left: 5em;
+  margin-top: 2em;
+  margin-left: 2em;
+  border: 1px solid #ffff;
 }
 
 .container-fluid {

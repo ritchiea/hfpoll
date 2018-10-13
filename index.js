@@ -21,7 +21,7 @@ io.on('connection', (socket) => {
     socket.broadcast.emit("update", data);
   });
   socket.on("admin", function(msg) {
-    socket.broadcast.emit("update", data);
+    socket.emit("update", data);
   });
   socket.on('disconnect', () => console.log('Client disconnected'));
 });
