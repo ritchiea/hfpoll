@@ -2,6 +2,8 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <% include ../partials/header.ejs %>
+  <link href="https://fonts.googleapis.com/css?family=Charmonman|Indie+Flower|Lobster|Merriweather+Sans|Pacifico|Srisakdi" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
   <script>
     var socket = io();
@@ -10,8 +12,6 @@
       socket.emit("name", $name.val());
     });
   </script>
-  <link href="https://fonts.googleapis.com/css?family=Charmonman|Indie+Flower|Lobster|Merriweather+Sans|Pacifico|Srisakdi" rel="stylesheet">
-  <% include ../partials/header.ejs %>
 </head>
 
 <body>
