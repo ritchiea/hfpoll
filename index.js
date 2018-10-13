@@ -25,7 +25,7 @@ io.on('connection', (socket) => {
   });
   socket.on("CLEAR", function(msg) {
     data = {};
-    socket.emit("update", data);
+    socket.broadcast.emit("update", data);
   });
   socket.on('disconnect', () => console.log('Client disconnected'));
 });
